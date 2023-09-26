@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Validation\Rule;
 
 class StoreStudentRequest extends FormRequest
 {
@@ -24,8 +24,9 @@ class StoreStudentRequest extends FormRequest
     public function rules()
     {
         return [
-            'fullname' => ['required', 'min:5', 'max:30', 'unique:students,fullname'],
-            'course' => ['required']
+            // 'fullname' => ['required', 'min:5', 'max:30', 'unique:students,fullname,' . $this->student->id],
+            'fullname' => ['required', 'min:5', 'max:30', Rule::unique('students')->ignore($this->student)], 
+            'course' => ['required'],
         ];
     }
 }
