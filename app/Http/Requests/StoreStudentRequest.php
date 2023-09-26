@@ -24,7 +24,7 @@ class StoreStudentRequest extends FormRequest
     public function rules()
     {
         return [
-            'fullname' => ['required', 'min:5', 'max:30', 'unique:students,fullname'],
+            'fullname' => ['required', 'min:5', 'max:30', 'unique:students,fullname,' . $this->student->id],
             'course' => ['required']
         ];
     }

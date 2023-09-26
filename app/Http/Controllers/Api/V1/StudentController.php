@@ -19,4 +19,10 @@ class StudentController extends Controller
         Student::create($request->validated());
         return response()->json("Student has been created");
     }
+
+    public function update(StoreStudentRequest $request, Student $student)
+    {
+        $student->update($request->validated());
+        return response()->json("Updated Successfully");
+    }
 }
